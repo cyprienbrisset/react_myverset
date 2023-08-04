@@ -20,13 +20,14 @@ function App() {
 
     return (
         <>
-            {verse && <div className={s.container}>
+            <div className={s.container}>
                 <Header/>
-                <div className={s.content_container}><VerseCard verse={verse}/>
+                <div className={s.content_container}>
+                    {verse && <VerseCard verse={verse}/>}
                 </div>
                 <Footer/>
             </div>
-            }
+
         </>
     );
 }
