@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import s from "./app.module.css"
+import {VerseCard} from "./components/VerseCard/VerseCard";
+import {Footer} from "./components/Footer/Footer";
+import {Header} from "./components/Header/Header";
+import {useEffect, useState} from "react";
+import {BibleApi} from "./api/bible.api";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [verse, setVerse] = useState()
+
+    useEffect(() => {
+        setFetchedVerse()
+    }, []);
+
+    async function setFetchedVerse() {
+        const fetchedVerse = await BibleApi.fetchOneVerse()
+        setVerse(fetchedVerse)
+    }
+
+    return (
+        <>
+            {verse && <div className={s.container}>
+                <Header/>
+                <div className={s.content_container}><VerseCard verse={verse}/>
+                </div>
+                <Footer/>
+            </div>
+            }
+        </>
+    );
 }
 
 export default App;

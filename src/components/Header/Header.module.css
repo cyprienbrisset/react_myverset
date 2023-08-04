@@ -1,0 +1,17 @@
+.title_container {
+    flex:1;
+    display: flex;
+    background-color: white;
+    justify-content: right;
+    align-items: center;
+    -webkit-box-shadow: 0px 0px 0px 0px #000000;
+    box-shadow: 0px 1px 5px 0px #000000;
+
+    .title {
+        text-align: center;
+        width: 150px;
+        flex:1;
+        font-family: bible, fantasy;
+        font-size: 25px;
+    }
+}
